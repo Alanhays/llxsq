@@ -272,6 +272,11 @@
                                 <input type="text" v-model="set.input" placeholder="下载链接" class="form-control"
                                        autocomplete="off">
                             </div>
+                            <label class="form-label">消耗流量(单位G)</label>
+                            <div class="form-control-wrap">
+                                <input type="number" v-model="set.flow" placeholder="1" class="form-control"
+                                       autocomplete="off">
+                            </div>
                         </div>
                         <div class="form-group">
                             <label class="form-label">线程</label>
@@ -398,6 +403,7 @@
                 infinite: true,
                 status: false,
                 thread: 10,
+                flow: 1
             },
             tasks: [],
             speed: '0.00B/s',
@@ -533,7 +539,11 @@
                 return size;
             },
             changeDownloadSpeed(filesize) {
+                if (filesize >= this.set.flow * 1024 * 1024) {
+                    this.set.status = !this.set.status
+                }
                 filesize = this.changeFilesize(filesize);
+
                 return filesize.replace(/\s([K|M|G|B]*)B{0,1}/, '$1/s')
             },
             yuan() {
