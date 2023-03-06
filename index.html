@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="zh" class="js">
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>让流量消失</title>
+    <link rel="stylesheet" href="static/css/dashlite.css">
+    <link rel="stylesheet" href="static/css/style4.css">
+    <link href="favicon.ico" mce_href="favicon.ico" rel="shortcut icon"
+          type="image/x-icon">
+<!--    <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css"/>-->
+</head>
+<body class="nk-body npc-invest bg-lighter ">
+<!-- wrap @s -->
+<div class="nk-wrap ">
+    <!-- main header @s -->
+    <div class="nk-header nk-header-fluid nk-header-fixed is-light">
+        <div class="container-xl">
+            <div class="nk-header-wrap link-between">
+                <div class="nk-menu-trigger mr-sm-2 d-lg-none">
+                    <a href="#" class="nk-nav-toggle nk-quick-nav-icon" data-target="headerNav"><em class="icon ni ni-menu"></em></a>
+                </div>
+                <div class="nk-header-brand">
+                    <a href="./index.html" class="logo-link text-base"><img src="./logo.png" class="hide-mb-sm">流量消失器</a>
+                </div>
+                <!-- .nk-header-brand -->
+                <div class="nk-header-tools nk-header-menu" data-content="headerNav">
+                    <div class="nk-header-mobile">
+                        <div class="nk-header-brand">
+                            <a href="" class="logo-link text-base">
+                                <span class="nio-version" style="font-size: 21px;position: inherit;">流量消失器</span>
+                            </a>
+                        </div>
+                        <div class="nk-menu-trigger mr-n2">
+                            <a href="#" class="nk-nav-toggle nk-quick-nav-icon" data-target="headerNav"><em class="icon ni ni-arrow-left"></em></a>
+                        </div>
+                    </div>
+                    <!-- Menu -->
+                    <ul class="nk-menu nk-menu-main">
+                       
+                        <li class="nk-menu-item ">
+<!--                            <a href="https://jq.qq.com/?_wv=1027&k=ssUGnxJq" class="nk-menu-link nk-ibx-action-item">-->
+
+<!--                                <span class="nk-menu-text">加入组织</span>-->
+<!--                            </a>-->
+                        </li>
+
+                        <li class="nk-menu-item ">
+<!--                            <a href="https://jq.qq.com/?_wv=1027&k=ssUGnxJq" class="nk-menu-link nk-ibx-action-item">-->
+
+<!--                                <span class="nk-menu-text">进入主页</span>-->
+<!--                            </a>-->
+                        </li>
+                    </ul>
+                </div>
+                <!-- .nk-header-menu -->
+                <div class="no-gutters">
+                    <ul class="nk-quick-nav">
+                        <li class="dropdown">
+                            <a href="javascript:;" class="progress-rating dark-switch ">
+                            <span class="nk-menu-icon">
+                                <em class="icon ni ni-moon"></em>
+                                <em class="icon ni ni-sun d-none"></em>
+                            </span>
+                            </a>
+                        </li>
+
+                    </ul>
+                    <!-- .nk-quick-nav -->
+                    <!-- .dropdown -->
+                </div>
+                <!-- .nk-header-tools -->
+            </div>
+            <!-- .nk-header-wrap -->
+        </div>
+        <!-- .container-fliud -->
+    </div>
+    <!-- main header @e -->
+    <!-- content @s -->
+    <div class="nk-content nk-content-lg nk-content-fluid">
+
+        <style>
+            .stat {
+                width: 100%;
+                column-gap: 1rem;
+                padding: 1rem 1.5rem;
+            }
+            .stat-title {
+                white-space: nowrap;
+                opacity: .6;
+            }
+            .stat-value {
+                white-space: nowrap;
+                grid-column-start: 1;
+                font-size: 1.8rem;
+                font-weight: 700;
+                line-height: 2.5rem
+            }
+        </style>
+
+        <div class="container-xl" id="app">
+
+            <div class="col-sm-12 col-md-10 col-xl-8 center-block">
+                <div class="card card-preview">
+                    <div class="card-inner mt-3">
+                        <div class="nya-title nk-ibx-action-item progress-rating">
+                            <span class="nk-menu-text font-weight-bold">让流量消失 免费使用</span>
+                            <span class="nk-menu-text font-weight-bold">收费为骗子</span>
+                        </div>
+                        <select class="form-control" style="height: 30px ;white-space:nowrap" id="niubi" @click.passive="yuan"  class="form-control">
+                            <option value="">如源不走定向 进入主页提交反馈</option>
+                            <option value="">先跑200M试试走不走定向</option>
+                            <option value="">线程太多 会容易退出哦</option>
+                            <option value="">先跑200M试试走不走定向</option>
+
+                            <option value="在这里输入" selected>自定义源</option>
+
+                            <option value="">↓↓以下XXXX源↓↓</option>
+                            <option value="">XXXX源 ① </option>
+
+
+
+
+
+
+                        </select></p>
+                        <div class="form-group">
+                            <label class="form-label">下载链接</label>
+                            <div class="form-control-wrap">
+                                <input type="text" v-model="set.input" placeholder="下载链接" class="form-control"
+                                       autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">线程</label>
+                            <div class="form-control-wrap number-spinner-wrap">
+                                <button class="btn btn-icon btn-outline-primary number-spinner-btn number-minus"
+                                        @click="if(set.thread>1)set.thread--"><em class="icon ni ni-minus"></em>
+                                </button>
+                                <input type="number" class="form-control number-spinner" min="1" max="32"
+                                       v-model="set.thread">
+                                <button class="btn btn-icon btn-outline-primary number-spinner-btn number-plus"><em
+                                        class="icon ni ni-plus" @click="if(set.thread<32)set.thread++"></em></button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="preview-block">
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" v-model="set.infinite"
+                                           id="customSwitch2">
+                                    <label class="custom-control-label" for="customSwitch2">无限循环</label>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-dim btn-outline-secondary btn-block card-link" @click="run">
+                            {{set.status ? '停止' : '开始'}}
+                        </button>
+                        <div class="row mt-4">
+                            <div class="col-sm-12 col-md-4 border stat">
+                                <div class="text-dark">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24"
+                                         stroke="currentColor" class="h-15 w-15 float-right pt-3">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                              d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path>
+                                    </svg>
+                                </div>
+                                <div class="stat-title">已消失的流量</div>
+                                <div class="stat-value">{{changeFilesize(waste)}}</div>
+                            </div>
+                            <div class="col-sm-12 col-md-4 border stat">
+                                <div class="text-info">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24"
+                                         stroke="currentColor" class="h-15 w-15 float-right pt-3">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                              d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                    </svg>
+                                </div>
+                                <div class="stat-title">每秒实时流量</div>
+                                <div class="stat-value text-info">{{speed}}</div>
+                            </div>
+                            <div class="col-sm-12 col-md-4 border stat">
+                                <div class="text-dark">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24"
+                                         stroke="currentColor" class="h-15 w-15 float-right pt-3">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                              d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                </div>
+                                <div class="stat-title">运行时长</div>
+                                <div class="stat-value">{{secToTime(spend)}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                <div class="card card-preview">
+                                    <div class="card-inner">
+                                        <h6><em class="icon ni ni-info"></em> 工具说明</h6>
+                                        <div class="accordion-inner">
+                                            <p>此工具可以以浪费的形式消耗你的流量</p>
+                                            <p>注意：无法请求跨域链接 最好使用浏览器运行</p>
+<!--                                            <p class="mdc-typography&#45;&#45;body1 " style="color: royalblue; font-weight:bold">①建议返回首页进群,查看如何使用</p>-->
+<!--                                            <p class="mdc-typography&#45;&#45;body1 " style="color: royalblue ;font-weight:bold">②建议先测试200M,再使用</p>-->
+<!--                                            <p class="mdc-typography&#45;&#45;body1 " style="color: royalblue ;font-weight:bold">③欢迎反馈源失效 和 投稿新的源</p>-->
+
+                                            <p class="mdc-typography--body1">PS:
+                                                如需消耗手机套餐内的定向流量，建议使用对应定向包的测速节点即可，如头条系定向包，选字节跳动测速节点，阿里系定向包，就选阿里消耗节点，其他定向包同理(非百分百准确)。</p>
+                                        </div>
+                                    </div>
+                                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <!-- content @d -->
+    <div class="nk-footer nk-footer-fluid bg-lighter">
+    </div>
+    <!-- footer @e -->
+</div>
+
+
+
+
+<!-- wrap @e -->
+
+
+<script src="static/js/jquery.min1.js"></script>
+<script src="static/js/bootstrap.bundle.min.js"></script>
+<script src="static/js/nioapp.min.js"></script>
+<script src="static/js/script.js"></script>
+<script src="static/js/common.js"></script>
+
+<script>
+    var plugin_id = 5;
+    var plugin_is_star = 0;
+    $("#star-btn-text").text(plugin_is_star ? '取消收藏' : '添加收藏');
+    $(document).ready(function () {
+        $('.dark-switch').on("click", function (e) {
+            if ($("body.dark-mode").length <= 0) {
+                document.cookie = 'darkmode=1';
+            } else {
+                document.cookie = 'darkmode=0';
+            }
+        });
+    })
+</script>
+<script src="static/js/vue.min.js"></script>
+<script src="static/js/axios.min.js"></script>
+
+<script>
+    var errors = null
+    new Vue({
+        el: '#app',
+        data: {
+            set: {
+                input: '',
+                output: '',
+                infinite: true,
+                status: false,
+                thread: 10,
+            },
+            tasks: [],
+            speed: '0.00B/s',
+            spend: 0,
+            url: '',
+            waste: 0,
+            timer: null,
+            cancelSource: axios.CancelToken.source()
+        },
+        watch: {
+            async 'set.status'(newVal) {
+                if (newVal) {
+                    this.cancelSource = axios.CancelToken.source()
+                    this.timer = setInterval(() => {
+                        this.speed = this.changeDownloadSpeed(this.tasks.reduce(function (prev, curr) {
+                            return prev + curr;
+                        }, 0));
+                        this.spend++
+                    }, 1000)
+                    do {
+                        await new Promise(resolve => {
+                            let task = []
+                            for (let i = 0; i < this.set.thread; i++) {
+                                task.push(this.download(Math.random().toString(36).substr(2, 10)))
+                            }
+                            Promise.all(task).finally(resolve)
+                        })
+                    } while (this.set.status && this.set.infinite)
+                } else {
+                    clearInterval(this.timer)
+                    this.cancelSource.cancel()
+                }
+            }
+        },
+        methods: {
+            selectedYuan() {
+                var selected = $(".form-control").find("option:selected").val();
+                var selecte = $(".form-control").find("option:selected");
+                $(".titlesss").html('消耗源：' + $(".form-control").find("option:selected").text() + '！速度和流量使用查看手机统计!');
+                console.log(selected.toString().length)
+                if (selected.toString().length > 4 && selected.toString().length != 5) {
+                    this.set.input = selected;
+                }
+
+                if (selected.toString().length < 4) {
+                    alert("此源不可用请重新选择");
+                    this.set.status = false
+                }
+
+
+                var URLPATTERN = "^([hH][tT]{2}[pP][sS]://|[hH][tT]{2}[pP][sS]://)(([A-Za-z0-9-~]+).)+([A-Za-z0-9-~\\/])+$";
+                var value = this.set.input;
+                if (value.search(URLPATTERN) != 0) {
+                    alert("源错误,请检查源地址是否为https请求,或者是否正确");
+                    this.set.status = false
+                }
+
+            },
+            run() {
+                this.set.status = !this.set.status
+                this.selectedYuan();
+            },
+            download(id) {
+
+                let loaded = 0
+                let speed = 0
+                let timestamp = new Date().getTime()
+                let that = this
+                const index = this.tasks.push(speed) - 1
+                return axios.request({
+                    url: this.set.input,
+                    params: {
+                        [id]: id,
+                    },
+                    cancelToken: this.cancelSource.token,
+                    onDownloadProgress: function (progressEvent) {
+                        // 处理原生进度事件
+                        const now = new Date().getTime();
+                        speed = (progressEvent.loaded - loaded) / (now - timestamp) * 1000
+                        that.tasks[index] = speed
+                        that.waste += progressEvent.loaded - loaded
+                        loaded = progressEvent.loaded
+                        timestamp = now
+                    },
+                }).catch(e => {
+                    if (!axios.isCancel(e)) {
+                        layer.msg(e.message, {icon: 2})
+                        this.set.status = false
+                    }
+                }).finally(() => {
+                    delete that.tasks[index]
+                })
+            },
+            secToTime(s) {
+                let t = '';
+                if (s > -1) {
+                    let hour = Math.floor(s / 3600)
+                    let min = Math.floor(s / 60) % 60
+                    let sec = s % 60
+                    if (hour > 0) {
+                        if (hour < 10) {
+                            t += '0'
+                        }
+                        t = hour + "h"
+                    }
+                    if (hour > 0 || min > 0) {
+                        if (min < 10) {
+                            t += '0'
+                        }
+                        t += min + "m"
+                    }
+                    if (sec < 10) {
+                        t += '0'
+                    }
+                    t += sec + 's'
+                }
+                return t
+            },
+            changeFilesize: (filesize) => {
+                filesize = parseInt(filesize);
+                let size = "";
+                if (filesize === 0) {
+                    size = "0.00 B"
+                } else if (filesize < 1024) { //小于1KB，则转化成B
+                    size = filesize.toFixed(2) + " B"
+                } else if (filesize < 1024 * 1024) { //小于1MB，则转化成KB
+                    size = (filesize / 1024).toFixed(2) + " KB"
+                } else if (filesize < 1024 * 1024 * 1024) { //小于1GB，则转化成MB
+                    size = (filesize / (1024 * 1024)).toFixed(2) + " MB"
+                } else { //其他转化成GB
+                    size = (filesize / (1024 * 1024 * 1024)).toFixed(2) + " GB"
+                }
+                return size;
+            },
+            changeDownloadSpeed(filesize) {
+                filesize = this.changeFilesize(filesize);
+                return filesize.replace(/\s([K|M|G|B]*)B{0,1}/, '$1/s')
+            },
+            yuan() {
+                var selected = $(".form-control").find("option:selected").val();
+                this.set.input = selected;
+            }
+        },
+    })
+</script>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JkDmQhGmIj06sn4j/quote.js?theme=#1690FF,#333333,#999999,#333333,#FFFFFF,#1690FF,10&f=12&display=0,1,1,1,1,1,1,1"></script>
+
+
+</body>
+
+</html>
