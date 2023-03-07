@@ -175,7 +175,7 @@
                             <option value="https://d.musicapp.migu.cn/upload/fbpt_rsync_apps/local/signed/MobileMusic7140/MobileMusic7140_0140068.apk">
                                 【移动】咪咕音乐
                             </option>
-                            <option value="https://img.cmvideo.cn/publish/noms/2022/10/14/1O3VIGPVP6HTS.jpg">
+                            <option value="https://img.cmvideo.cn/publish/noms/2023/01/04/1O4PD7VNLBL14.jpg">
                                 【移动】咪咕视频
                             </option>
                             <option value="https://freeserver.migufun.com/resource/beta/picture/system/20200723/20200723104326220_sdpic.png">
@@ -479,6 +479,7 @@
                 const index = this.tasks.push(speed) - 1
                 return axios.request({
                     url: this.set.input,
+                    headers: {'referer': 'http://localhost:63342/'},
                     params: {
                         [id]: id,
                     },
