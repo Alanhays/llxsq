@@ -272,9 +272,9 @@
                                 <input type="text" v-model="set.input" placeholder="下载链接" class="form-control"
                                        autocomplete="off">
                             </div>
-                            <label class="form-label">消耗流量(单位G)</label>
+                            <label class="form-label">消耗流量(单位M)</label>
                             <div class="form-control-wrap">
-                                <input type="number" v-model="set.flow" placeholder="1" class="form-control"
+                                <input type="number" v-model="set.flow" placeholder="100" class="form-control"
                                        autocomplete="off">
                             </div>
                         </div>
@@ -403,7 +403,7 @@
                 infinite: true,
                 status: false,
                 thread: 10,
-                flow: 1
+                flow: 100
             },
             tasks: [],
             speed: '0.00B/s',
@@ -453,13 +453,17 @@
                     this.set.status = false
                 }
 
-
                 var URLPATTERN = "^([hH][tT]{2}[pP][sS]://|[hH][tT]{2}[pP][sS]://)(([A-Za-z0-9-~]+).)+([A-Za-z0-9-~\\/])+$";
                 var value = this.set.input;
                 if (value.search(URLPATTERN) != 0) {
                     alert("源错误,请检查源地址是否为https请求,或者是否正确");
                     this.set.status = false
                 }
+                if (this.waste >= this.set.flow * 1024 * 1024) {
+                    alert("消耗流量达到设定上限，如需继续请修改。");
+                    this.set.status = false
+                }
+
 
             },
             run() {
@@ -539,7 +543,7 @@
                 return size;
             },
             changeDownloadSpeed(filesize) {
-                if (filesize >= this.set.flow * 1024 * 1024) {
+                if (this.waste >= this.set.flow * 1024 * 1024) {
                     this.set.status = !this.set.status
                 }
                 filesize = this.changeFilesize(filesize);
